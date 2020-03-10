@@ -12,7 +12,8 @@ public class RegularSample extends Sampler{
 	
 	public Point2D sample(int row, int col, int x, int y)
 	{
-		Point2D point = new Point2D();
+		Point2D point = new Point2D(); 
+		
 		point.x = x-Driver.world.viewPlane.width/2+(col+0.5)/samples;
 		point.y = y-Driver.world.viewPlane.height/2+(row+0.5)/samples;
 		

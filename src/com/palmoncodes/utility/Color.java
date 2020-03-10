@@ -16,15 +16,22 @@ public class Color {
 		this.g = g;
 		this.b = b;
 	}
-
+	
 	public Color(Color color)
+	{
+		r = color.r;
+		g = color.g;
+		b = color.b;
+	}
+
+	public void add(Color color)
 	{
 		r += color.r;
 		g += color.g;
 		b += color.b;
 	}
 	
-	public void divid(int scalar)
+	public void divide(int scalar)
 	{
 		r /= scalar;
 		g /= scalar;
