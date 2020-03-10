@@ -1,7 +1,6 @@
 package com.palmoncodes.tracer;
 
 import com.palmoncodes.utility.Color;
-import com.palmoncodes.utility.Point2D;
 import com.palmoncodes.utility.Point3D;
 import com.palmoncodes.utility.Ray;
 import com.palmoncodes.utility.Vector3D;
@@ -10,17 +9,11 @@ public class Tracer {
 
 	public void trace(int x, int y) {
 
-		for (int row = 0; row < Driver.sampler.samples; row++) {
-			for (int col = 0; col < Driver.sampler.samples; col++) {
-				Point2D point = Driver.sampler.sample(row, col, x, y);
-
-				Ray ray = new Ray(new Point3D(Driver.world.viewPlane.size * (point.x),
-						Driver.world.viewPlane.size * (point.y), 100), new Vector3D(0.0, 0.0, -1.0));
-			}
-		}
-
 		double min = Double.MAX_VALUE;
-		Color color = new Color();
+		Color color = Driver.world.background;
+
+		Ray ray = new Ray(new Point3D(1.0 * (x - Driver.world.viewPlane.width / 2 + .5),
+				1.0 * (y - Driver.world.viewPlane.height / 2 + .5), 100), new Vector3D(0.0, 0.0, -1.0));
 
 		for (int i = 0; i < Driver.world.objects.size(); i++) {
 
